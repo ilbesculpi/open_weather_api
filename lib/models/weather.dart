@@ -61,7 +61,10 @@ class WeatherInfo {
     required this.weather,
     required this.main,
     required this.base,
-    required this.visibility
+    required this.visibility,
+    required this.id,
+    required this.name,
+    required this.cod
   });
 
   factory WeatherInfo.fromJson(Map<String, dynamic> json) => _$WeatherInfoFromJson(json);
@@ -71,5 +74,8 @@ class WeatherInfo {
   final WeatherData main;
   final String base;
   final int visibility;
+  final int id;
+  final String name;
+  final int cod;
 
 }
