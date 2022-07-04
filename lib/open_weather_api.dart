@@ -1,7 +1,5 @@
 library open_weather_api;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+/// Open Weather API.
+export 'models/weather.dart';
+export 'open_weather_api_client.dart';
