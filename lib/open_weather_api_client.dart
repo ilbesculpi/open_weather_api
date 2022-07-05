@@ -18,10 +18,13 @@ class OpenWeatherApiClient {
 
   final _httpClient = http.Client();
   static const _baseUrl = 'community-open-weather-map.p.rapidapi.com';
+  final String apiKey;
+
+  OpenWeatherApiClient({ required this.apiKey });
 
   Future<WeatherInfo> currentWeather(String query) async {
     
-    final request = Uri.https(
+    final url = Uri.https(
         _baseUrl,
         '/weather',
         <String, String>{
@@ -31,7 +34,10 @@ class OpenWeatherApiClient {
         }
     );
 
-    final response = await _httpClient.get(request);
+    final response = await _httpClient.get(url, headers: {
+      'X-RapidAPI-Key': this.apiKey,
+      'X-RapidAPI-Host': _baseUrl
+    });
 
     if (response.statusCode != 200) {
       throw ApiRequestFailure();
